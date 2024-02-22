@@ -1,0 +1,21 @@
+.Me-comp {
+    font-family: Courier, monospace;
+    word-break: break-all;
+}
+
+.Me-comp div {
+    display: flex;
+    flex-direction: column;
+}
+.Me-comp .row {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+}
+
+
+.Me-comp .header {
+    text-align: start;
+    min-width: 30%;
+}
+

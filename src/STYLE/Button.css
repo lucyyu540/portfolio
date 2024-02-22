@@ -1,0 +1,38 @@
+.myButton {
+    position: relative;
+    min-height: 60px;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    padding-block: 0;
+    padding-inline: 0;
+    border-width: 0;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.myButtonOn {
+    background-color: #596FB7;
+}
+
+.myButton:hover {
+    background-color: #596FB7;
+}
+
+
+.myButton a {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.myButton a:hover {
+    color: white
+}

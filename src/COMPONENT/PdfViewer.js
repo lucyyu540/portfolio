@@ -6,10 +6,9 @@ export default function PdfViewer({ path }) {
             width="100%" height="100%"
         >
             <p>Unable to display PDF file.
-                <a href={path}>
-                    Download
+                <a className='spaceLeft' href={path}>
+                    Click to download. 
                 </a>
-                instead.
             </p>
         </object>
     )

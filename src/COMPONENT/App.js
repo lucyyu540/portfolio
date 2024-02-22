@@ -32,7 +32,7 @@ function App() {
             value={
               <a target='_blank' href='https://github.com/lucyyu540?tab=repositories'>
               Repositories 
-              <img className='spaceLeft' src='./assets/ic_link.svg'/>
+              <img className='spaceLeft' src='/assets/ic_link.svg'/>
             </a>
             }
             setValue={() => { }}
@@ -53,7 +53,7 @@ function App() {
               )
             case "CV": 
             return (
-              <PdfViewer path={'./files/censored_resume.pdf'}/>
+              <PdfViewer path={'/files/censored_resume.pdf'}/>
             )
           }
         })()}

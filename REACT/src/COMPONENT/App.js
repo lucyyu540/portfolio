@@ -14,26 +14,26 @@ export default function App() {
       <div className="App-header">
         <div className='tabs'>
           <Button
-            active={focus==="ME"}
+            active={focus === "ME"}
             value="About Me"
             setValue={() => setFocus("ME")}
           />
           <Button
-            active={focus==="PROJECTS"}
+            active={focus === "PROJECTS"}
             value="Projects"
             setValue={() => setFocus("PROJECTS")}
           />
           <Button
-            active={focus==="CV"}
+            active={focus === "CV"}
             value="CV"
             setValue={() => setFocus("CV")}
           />
-           <Button
+          <Button
             value={
               <a target='_blank' href='https://github.com/lucyyu540?tab=repositories' rel="noreferrer">
-              Repositories 
-              <img className='spaceLeft' src={process.env.PUBLIC_URL+'/assets/ic_link.svg'} alt=''/>
-            </a>
+                Repositories
+                <img className='spaceLeft' src={process.env.PUBLIC_URL + '/assets/ic_link.svg'} alt='' />
+              </a>
             }
             setValue={() => { }}
           />
@@ -45,15 +45,15 @@ export default function App() {
           switch (focus) {
             case "ME":
               return (
-                <Me/>
+                <Me />
               );
             case "PROJECTS":
               return (
                 <Project />
               )
-            case "CV": 
+            case "CV":
               return (
-                <PdfViewer path={'/assets/censored_resume.pdf'}/>
+                <PdfViewer path={process.env.PUBLIC_URL + '/assets/censored_resume.pdf'} />
               );
             default:
               return null;

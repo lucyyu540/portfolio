@@ -72,7 +72,7 @@ function SideBar({ setItem }) {
     else {
         return (
             <img className='menu'
-                src={process.env.PUBLIC_URL + './assets/ic_menu.svg'}
+                src={process.env.PUBLIC_URL + '/assets/ic_menu.svg'}
                 alt=''
                 onClick={doOpen}
             />

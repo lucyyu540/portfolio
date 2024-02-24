@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.903e154d.css",
-    "main.js": "/static/js/main.0dc6ac1b.js",
-    "static/js/787.7da95b79.chunk.js": "/static/js/787.7da95b79.chunk.js",
-    "index.html": "/index.html",
-    "main.903e154d.css.map": "/static/css/main.903e154d.css.map",
-    "main.0dc6ac1b.js.map": "/static/js/main.0dc6ac1b.js.map",
-    "787.7da95b79.chunk.js.map": "/static/js/787.7da95b79.chunk.js.map"
+    "main.css": "https://lucyyu540.github.io/portfolio/build/static/css/main.45093755.css",
+    "main.js": "https://lucyyu540.github.io/portfolio/build/static/js/main.b9d58ce8.js",
+    "static/js/787.7da95b79.chunk.js": "https://lucyyu540.github.io/portfolio/build/static/js/787.7da95b79.chunk.js",
+    "index.html": "https://lucyyu540.github.io/portfolio/build/index.html",
+    "main.45093755.css.map": "https://lucyyu540.github.io/portfolio/build/static/css/main.45093755.css.map",
+    "main.b9d58ce8.js.map": "https://lucyyu540.github.io/portfolio/build/static/js/main.b9d58ce8.js.map",
+    "787.7da95b79.chunk.js.map": "https://lucyyu540.github.io/portfolio/build/static/js/787.7da95b79.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.903e154d.css",
-    "static/js/main.0dc6ac1b.js"
+    "static/css/main.45093755.css",
+    "static/js/main.b9d58ce8.js"
   ]
 }

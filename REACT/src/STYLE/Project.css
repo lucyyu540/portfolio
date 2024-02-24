@@ -1,0 +1,63 @@
+.Projects {
+    margin-top: 80px;
+    height: calc(100% - 140px) !important;
+}
+
+.Projects .menu {
+    position: absolute;
+    top: 80px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.Projects .background {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 0;
+    top: 60px;
+    width: 100%;
+    height: calc(100% - 60px);
+}
+
+.Projects .background .sidebar {
+    background-color: #282c34;
+    width: 30%;
+    height: 100%;
+    padding-top: 40px;
+    box-shadow: 20px 30px 60px 0 rgba(0, 0, 0, 0.3);
+}
+
+.Projects .sidebar .item {
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.Projects .sidebar .item:hover {
+    background-color: #596FB7;
+}
+
+.Projects img {
+    border-radius: 4px;
+    box-shadow: 2px 3px 6px 0 rgba(0, 0, 0, 0.6);
+    height: 285px;
+    width: 500px
+}
+.Projects .diagram img {
+    margin-bottom: 10px;
+}
+
+.Projects .section {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #F6ECA9;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+}

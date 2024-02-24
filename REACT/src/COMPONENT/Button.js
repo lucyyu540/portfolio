@@ -1,4 +1,4 @@
-import './../STYLE/Button.css'
+import '../STYLE/Button.css'
 export default function Button({ active, value, setValue }) {
     return (
         <button

@@ -6,7 +6,7 @@ import { useState } from 'react'
 import Button from './Button';
 import Project from './Project';
 import PdfViewer from './PdfViewer';
-function App() {
+export default function App() {
   const [focus, setFocus] = useState('ME');
 
   return (
@@ -30,9 +30,9 @@ function App() {
           />
            <Button
             value={
-              <a target='_blank' href='https://github.com/lucyyu540?tab=repositories'>
+              <a target='_blank' href='https://github.com/lucyyu540?tab=repositories' rel="noreferrer">
               Repositories 
-              <img className='spaceLeft' src='/assets/ic_link.svg'/>
+              <img className='spaceLeft' src={process.env.PUBLIC_URL+'/assets/ic_link.svg'} alt=''/>
             </a>
             }
             setValue={() => { }}
@@ -52,9 +52,11 @@ function App() {
                 <Project />
               )
             case "CV": 
-            return (
-              <PdfViewer path={'/files/censored_resume.pdf'}/>
-            )
+              return (
+                <PdfViewer path={'/assets/censored_resume.pdf'}/>
+              );
+            default:
+              return null;
           }
         })()}
 
@@ -68,4 +70,3 @@ function App() {
   );
 }
 
-export default App;

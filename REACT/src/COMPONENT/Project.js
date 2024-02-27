@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../STYLE/Project.css';
+import Button from './Button';
 
 
 const m_3d_mesh = '3D Mesh';
@@ -7,14 +8,45 @@ const m_dicom = 'Web DICOM Viewer';
 
 const items = [
     m_3d_mesh,
-    //m_dicom
+    m_dicom
 ]
 export default function Project() {
-    const [item, setItem] = useState(items[0]);
+    const [index, setIndex] = useState(0);
+    const [item, setItem] = useState(items[index]);
     return (
         <div id='projects' className="content Projects">
 
+
             <SideBar setItem={setItem} />
+
+            <div className='topBar'>
+                <div className='navigator'>
+                    <Button
+                        disabled={index === 0 ? true : false}
+                        value={
+                            index === 0 ? '' :
+                                (<span>
+                                    <img src={`${process.env.PUBLIC_URL}/assets/ic_prev.svg`} alt='' />
+                                    {items[index - 1]}
+                                </span>)
+                        }
+                        setValue={() => { setIndex(index - 1); setItem(items[index - 1]) }}
+                    />
+                    <Button
+                        disabled={index === items.length - 1 ? true : false}
+                        value={
+                            index === items.length - 1 ? '' :
+                                (<span>
+                                    {items[index + 1]}
+                                    <img src={`${process.env.PUBLIC_URL}/assets/ic_next.svg`} alt='' />
+                                </span>)
+                        }
+                        setValue={() => { setIndex(index + 1); setItem(items[index + 1]) }}
+                    />
+                </div>
+
+            </div>
+
 
             {(() => {
                 switch (item) {
@@ -31,7 +63,7 @@ export default function Project() {
     )
 }
 function SideBar({ setItem }) {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     function chooseItem(e, item) {
         if (e) {
@@ -71,11 +103,13 @@ function SideBar({ setItem }) {
     )
     else {
         return (
-            <img className='menu'
-                src={process.env.PUBLIC_URL + '/assets/ic_menu.svg'}
-                alt=''
-                onClick={doOpen}
-            />
+            <button className='topBar menu' onClick={doOpen}>
+                <img
+                    src={process.env.PUBLIC_URL + '/assets/ic_menu.svg'}
+                    alt=''
+                />
+            </button>
+
         )
     }
 }
@@ -185,12 +219,57 @@ function P2_WEBDICOM() {
                 Web DICOM Viewer
             </h1>
 
-            <Section name='Orthogonal and non orthogonal representation' />
-            <Section name='DICOM Lossy compression' />
-            <Section name='DICOM VTK Rendering' />
-            <Section name='' />
-            <Section name='' />
-            <Section name='' />
+            <Section name='Volume Data Handling' />
+            <p>
+                Merge, sum, and extract orthogonal and non-orthogonal volum data of differing spatial
+                orientation and position. (Diagram 1: one orthogonal volume and one non-orthogonal volume /
+                diagram 2: non-orthogonal volume spatially mapped onto the orthogonal volume)
+            </p>
+            <img src={process.env.PUBLIC_URL + '/assets/dicom_web/twoVols.png'} alt='' />
+            <img src={process.env.PUBLIC_URL + '/assets/dicom_web/mergedVols.png'} alt='' />
+
+            <Section name='3D Rendering' />
+            <ul>
+                <li>
+                    Apply WebGL and web thread workers to represent rich image data on HTML5 Canvas Elements
+                </li>
+                <li>
+                    Build volumes from slices of axial images and
+                    compute sagittal and coronal intersectional views
+                </li>
+                <li>
+                    Instatiate a virtual camera to perform 3D transformations -
+                    namely, rotation, translation, and scaling - on volumetric images
+                </li>
+            </ul>
+            <img src={process.env.PUBLIC_URL + '/assets/dicom_web/camera.png'} alt='' />
+
+            <Section name='DICOM Support' />
+            <p>
+                Parse DICOM standardized data and represent header or raw values as components
+                on volume data (e.g. dose beams on patient images, contour data around regions of interest)
+            </p>
+            <Section name='Optimization' />
+            <p>
+                DICOM objects tend to be heavy (as heavy as 250 MB or more)
+                and a single job can require transferring bulks of such objects over the network. The following
+                are some of the optimization procedures implemented in the project for network traffic,
+                memory load, and computational optimization.
+            </p>
+            <ul>
+                <li>
+                    Lossy compression on voxel data
+                </li>
+                <li>
+                    Point reduction
+                </li>
+                <li>
+                    Data chunking 
+                </li>
+                <li>
+                    Browser caching using IndexedDB
+                </li>
+            </ul>
 
         </div>
     )

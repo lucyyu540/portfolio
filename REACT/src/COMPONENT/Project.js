@@ -5,21 +5,30 @@ import Button from './Button';
 
 const m_3d_mesh = '3D Mesh';
 const m_dicom = 'Web DICOM Viewer';
+const m_home8 = 'NYC House Sharing'
 
 const items = [
     m_3d_mesh,
-    m_dicom
+    m_dicom,
+    m_home8
 ]
 export default function Project() {
     const [index, setIndex] = useState(0);
-    const [item, setItem] = useState(items[index]);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+
     return (
         <div id='projects' className="content Projects">
 
 
-            <SideBar setItem={setItem} />
-
+            {/**TOP BAR SECTION */}
             <div className='topBar'>
+                <button className='menu' onClick={(e) => setSidebarOpen(true)}>
+                    <img
+                        src={process.env.PUBLIC_URL + '/assets/ic_menu.svg'}
+                        alt=''
+                    />
+                </button>
+
                 <div className='navigator'>
                     <Button
                         disabled={index === 0 ? true : false}
@@ -30,7 +39,7 @@ export default function Project() {
                                     {items[index - 1]}
                                 </span>)
                         }
-                        setValue={() => { setIndex(index - 1); setItem(items[index - 1]) }}
+                        setValue={() => { setIndex(index - 1); }}
                     />
                     <Button
                         disabled={index === items.length - 1 ? true : false}
@@ -41,19 +50,26 @@ export default function Project() {
                                     <img src={`${process.env.PUBLIC_URL}/assets/ic_next.svg`} alt='' />
                                 </span>)
                         }
-                        setValue={() => { setIndex(index + 1); setItem(items[index + 1]) }}
+                        setValue={() => { setIndex(index + 1); }}
                     />
                 </div>
-
             </div>
 
+            <SideBar
+                open={sidebarOpen}
+                setOpen={setSidebarOpen}
+                setIndex={setIndex}
+            />
 
+            {/**PROJECT CONTENTS */}
             {(() => {
-                switch (item) {
+                switch (items[index]) {
                     case m_3d_mesh:
                         return <P1_MESH />;
                     case m_dicom:
                         return <P2_WEBDICOM />;
+                    case m_home8:
+                        return <P3_HOME8 />;
                     default:
                         return null;
                 }
@@ -62,25 +78,18 @@ export default function Project() {
         </div>
     )
 }
-function SideBar({ setItem }) {
-    const [open, setOpen] = useState(false);
+function SideBar({ open, setOpen, setIndex }) {
 
-    function chooseItem(e, item) {
+    function chooseItem(e, index) {
         if (e) {
             e.stopPropagation();
         }
-        setItem(item);
-        doClose();
+        setIndex(index)
     }
 
     function doClose(e) {
-        console.log(e)
         setOpen(false);
     }
-    function doOpen() {
-        setOpen(true);
-    }
-
 
     if (open) return (
         <div
@@ -89,11 +98,11 @@ function SideBar({ setItem }) {
         >
 
             <div className="sidebar">
-                {items.map(it => (
+                {items.map((it, index) => (
                     <div
                         key={it}
                         className="item"
-                        onClick={e => chooseItem(e, it)}>
+                        onClick={e => chooseItem(e, index)}>
                         {it}
                     </div>
                 ))}
@@ -101,17 +110,6 @@ function SideBar({ setItem }) {
         </div>
 
     )
-    else {
-        return (
-            <button className='topBar menu' onClick={doOpen}>
-                <img
-                    src={process.env.PUBLIC_URL + '/assets/ic_menu.svg'}
-                    alt=''
-                />
-            </button>
-
-        )
-    }
 }
 
 function P1_MESH() {
@@ -238,7 +236,7 @@ function P2_WEBDICOM() {
                     compute sagittal and coronal intersectional views
                 </li>
                 <li>
-                    Instatiate a virtual camera to perform 3D transformations -
+                    Instantiate a virtual camera to perform 3D transformations -
                     namely, rotation, translation, and scaling - on volumetric images
                 </li>
             </ul>
@@ -264,7 +262,7 @@ function P2_WEBDICOM() {
                     Point reduction
                 </li>
                 <li>
-                    Data chunking 
+                    Data chunking
                 </li>
                 <li>
                     Browser caching using IndexedDB
@@ -273,6 +271,31 @@ function P2_WEBDICOM() {
 
         </div>
     )
+}
+
+function P3_HOME8() {
+    return (
+        <div>
+            <h1>
+                Web Application for Matching Compatible Housemates
+            </h1>
+
+            <ul>
+                <li>
+                    Had been deployed and tested on AWS
+                </li>
+                <li>
+                    Google Map React
+                </li>
+            </ul>
+
+
+            <img className='imgLarge' src='https://github.com/lucyyu540/home8/blob/master/ex1.png?raw=true' alt='' />
+            <img className='imgLarge' src='https://github.com/lucyyu540/home8/blob/master/ex2.png?raw=true' alt='' />
+
+        </div>
+    )
+
 }
 
 function Section({ name }) {

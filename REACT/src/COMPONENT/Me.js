@@ -15,6 +15,13 @@ export default function Me() {
                 </div>
                 Full Stack Software Engineer
             </div>
+            <div className='row spaceBottom'>
+                <div className='header'>
+                    Email:
+                </div>
+                <a href = "mailto: jsy332@nyu.edu" target="_blank">jsy332@nyu.edu</a>
+
+            </div>
 
             <div className='row spaceBottom'>
                 <div className='header'>
@@ -57,7 +64,7 @@ export default function Me() {
 
             <div className='row'>
                 <div className='header'>
-                    Located
+                    Located:
                 </div>
                 <div>
                     <div className='spaceBottom'>

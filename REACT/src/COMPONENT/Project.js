@@ -130,6 +130,10 @@ function P1_MESH() {
                 Reconstructing 2D contour data into a renderable 3D surface expressed by a triangle mesh.
             </p>
 
+            <Section name='Worklow' />
+            <img className='imgLarge' src={process.env.PUBLIC_URL + '/assets/mesh/mesh_diagram.png'} alt='' />
+
+
             {/**3D*/}
 
             <Section name='I. Branching between Planes' />
@@ -186,7 +190,7 @@ function P1_MESH() {
                     Steps I and II produce a triangle mesh, which,
                     in the context of this project,
                     is used to mark regions of interest (e.g. brain, lung) on multiplanar and 3D renderings derived from the patient's medical images.
-                    This concluding phase of the project involves extracting the outline of the orthogonal/non-orthogonal planar intersections by sequentially traversing through
+                    This concluding phase of the project involves extracting the outline of the orthogonal/non-orthogonal planar intersection (cross-section polygon) by sequentially traversing through
                     neighboring triangles of the mesh.
                 </p>
                 <img src={process.env.PUBLIC_URL + '/assets/mesh/plane_cut.png'} alt='' />

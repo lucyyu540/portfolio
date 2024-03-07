@@ -148,8 +148,8 @@ function P1_MESH() {
                         - if they don't overlap there is no branching between the two contours
                     </li>
                     <li>
-                        Whether there are differences in topology between the two contours
-                        - a change in topology signifies a need to partition the volume
+                        Whether there are differences in topology between the two contours (holes form, merge, etc.)
+                        - a change in topology signifies the need for a unique surface modeling approach.
                     </li>
                 </ol>
 

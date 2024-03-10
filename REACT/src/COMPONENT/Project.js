@@ -6,11 +6,12 @@ import Button from './Button';
 const m_3d_mesh = '3D Mesh';
 const m_dicom = 'Web DICOM Viewer';
 const m_home8 = 'NYC House Sharing'
-
+const m_bill = 'Hospital Payment System'
 const items = [
     m_3d_mesh,
     m_dicom,
-    m_home8
+    m_home8,
+    m_bill
 ]
 export default function Project() {
     const [index, setIndex] = useState(0);
@@ -70,6 +71,8 @@ export default function Project() {
                         return <P2_WEBDICOM />;
                     case m_home8:
                         return <P3_HOME8 />;
+                    case m_bill:
+                        return <P4_PAYMENT_SYS/>;
                     default:
                         return null;
                 }
@@ -153,8 +156,8 @@ function P1_MESH() {
                     </li>
                 </ol>
 
-                <img src={process.env.PUBLIC_URL + '/assets/mesh/multi_plane.png'} alt='' />
-                <img src={process.env.PUBLIC_URL + '/assets/mesh/branch.png'} alt='' />
+                <img className='imgMed' src={process.env.PUBLIC_URL + '/assets/mesh/multi_plane.png'} alt='' />
+                <img className='imgMed' src={process.env.PUBLIC_URL + '/assets/mesh/branch.png'} alt='' />
 
             </div>
 
@@ -177,8 +180,8 @@ function P1_MESH() {
                     must be partitioned first, as depicted below, and changed into regular polygons
                     before applying the earcut triangulation.
                 </p>
-                <img src={process.env.PUBLIC_URL + '/assets/mesh/complex_poly.png'} alt='' />
-                <img src={process.env.PUBLIC_URL + '/assets/mesh/decom.png'} alt='' />
+                <img className='imgMed' src={process.env.PUBLIC_URL + '/assets/mesh/complex_poly.png'} alt='' />
+                <img className='imgMed' src={process.env.PUBLIC_URL + '/assets/mesh/decom.png'} alt='' />
 
             </div>
 
@@ -193,8 +196,8 @@ function P1_MESH() {
                     This concluding phase of the project involves extracting the outline of the orthogonal/non-orthogonal planar intersection (cross-section polygon) by sequentially traversing through
                     neighboring triangles of the mesh.
                 </p>
-                <img src={process.env.PUBLIC_URL + '/assets/mesh/plane_cut.png'} alt='' />
-                <img src={process.env.PUBLIC_URL + '/assets/mesh/planar_intersection.png'} alt='' />
+                <img className='imgMed' src={process.env.PUBLIC_URL + '/assets/mesh/plane_cut.png'} alt='' />
+                <img className='imgMed' src={process.env.PUBLIC_URL + '/assets/mesh/planar_intersection.png'} alt='' />
             </div>
 
 
@@ -220,15 +223,42 @@ function P2_WEBDICOM() {
             <h1>
                 Web DICOM Viewer
             </h1>
+            <h5>
+                Tech stack: JavaSript, HTML5 Canvas, WebGL, React
+            </h5>
 
-            <Section name='Volume Data Handling' />
+            <Section name='Project Summary' />
+            <img className='imgMed' src={process.env.PUBLIC_URL + '/assets/dicom_web/mr.png'} alt='' />
+
             <p>
-                Merge, sum, and extract orthogonal and non-orthogonal volum data of differing spatial
-                orientation and position. (Diagram 1: one orthogonal volume and one non-orthogonal volume /
-                diagram 2: non-orthogonal volume spatially mapped onto the orthogonal volume)
+                <i>Disclaimer:
+                    The project screenshot above is taken directly from public marketing materials,
+                    and I am not disclosing any confidential information by sharing it.
+                </i>
+                <ol>
+                    <li>Visualization of Hounsfield values on HTML5 Canvas</li>
+                    <li>Voxelization</li>
+                    <li>3D Rendering</li>
+                    <li>Volume Handling</li>
+                    <li>Optimization</li>
+                </ol>
             </p>
-            <img src={process.env.PUBLIC_URL + '/assets/dicom_web/twoVols.png'} alt='' />
-            <img src={process.env.PUBLIC_URL + '/assets/dicom_web/mergedVols.png'} alt='' />
+            <Section name='Hounsfield Value Representation and DICOM Support' />
+            <ul>
+                <li>
+                    Scale Hounsfield values stored as 8, 16, or 32 bits
+                    to renderable RGB values
+                </li>
+                <li>
+                    Parse DICOM standardized data and represent header or raw values as components
+                    on volume data (e.g. dose beams on patient images, contour data around regions of interest)
+                </li>
+            </ul>
+
+            <Section name='Voxelizaiton (Multi-Planar Representaion)' />
+            <img className='imgMed' src={process.env.PUBLIC_URL + '/assets/dicom_web/volume.png'} alt='' />
+            <img className='imgMed' src={process.env.PUBLIC_URL + '/assets/dicom_web/mpr.png'} alt='' />
+
 
             <Section name='3D Rendering' />
             <ul>
@@ -246,11 +276,17 @@ function P2_WEBDICOM() {
             </ul>
             <img src={process.env.PUBLIC_URL + '/assets/dicom_web/camera.png'} alt='' />
 
-            <Section name='DICOM Support' />
+            <Section name='Volume Data Handling' />
             <p>
-                Parse DICOM standardized data and represent header or raw values as components
-                on volume data (e.g. dose beams on patient images, contour data around regions of interest)
+                Merge, sum, and extract orthogonal and non-orthogonal volum data of differing spatial
+                orientation and position. (Diagram 1: one orthogonal volume and one non-orthogonal volume /
+                diagram 2: non-orthogonal volume spatially mapped onto the orthogonal volume)
             </p>
+            <img className='imgMed' src={process.env.PUBLIC_URL + '/assets/dicom_web/twoVols.png'} alt='' />
+            <img className='imgMed' src={process.env.PUBLIC_URL + '/assets/dicom_web/mergedVols.png'} alt='' />
+
+
+
             <Section name='Optimization' />
             <p>
                 DICOM objects tend to be heavy (as heavy as 250 MB or more)
@@ -283,6 +319,9 @@ function P3_HOME8() {
             <h1>
                 Web Application for Matching Compatible Housemates
             </h1>
+            <h5>
+                Tech stack: JavaSript, React, Node, AWS, MYSQL
+            </h5>
 
             <ul>
                 <li>
@@ -293,10 +332,25 @@ function P3_HOME8() {
                 </li>
             </ul>
 
-
             <img className='imgLarge' src='https://github.com/lucyyu540/home8/blob/master/ex1.png?raw=true' alt='' />
             <img className='imgLarge' src='https://github.com/lucyyu540/home8/blob/master/ex2.png?raw=true' alt='' />
+            
+            <Section name='ER Diagram' />
+            <img className='imgLarge' src={process.env.PUBLIC_URL + '/assets/home8/erd.png'} alt='' />
 
+        </div>
+    )
+
+}
+function P4_PAYMENT_SYS() {
+    return (
+        <div>
+            <h1>
+                Hospital Payment System 
+            </h1>
+            <h5>
+                Tech stack:Jave, JavaSript, Vue, Spring, MYSQL
+            </h5>
         </div>
     )
 
